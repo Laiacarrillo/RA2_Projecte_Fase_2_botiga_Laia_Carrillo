@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catàleg de PixelCat Games: videojocs d'estratègia, aventura, curses, terror i trencaclosques per a PC, PS5, Xbox Series, Switch i mòbil.">
+  <meta name="author" content="Laia Carrillo">
+  <title>Catàleg de videojocs | PixelCat Games</title>
+  <link rel="icon" href="img/logo-pixelcat.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estils.css">
+</head>
+<body>
+  <a class="salt-contingut" href="#contingut">Salta al contingut principal</a>
+
+  <header class="capcalera" id="capcalera">
+    <div class="capcalera__interior">
+      <a class="logo" href="index.html">
+        <img class="logo__imatge" src="img/logo-pixelcat.svg" alt="" width="48" height="39">
+        <span class="logo__nom">PixelCat Games</span>
+      </a>
+      <nav class="navegacio" aria-label="Navegació principal">
+        <ul class="menu" id="menu-principal">
+          <li><a class="menu__enllac actiu" href="index.html" aria-current="page">Catàleg</a></li>
+          <li><a class="menu__enllac" href="fitxa.html">Fitxa de joc</a></li>
+          <li><a class="menu__enllac" href="contacte.html">Contacte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contingut" id="contingut">
+
+    <section class="portada" id="portada" aria-labelledby="titol-portada">
+      <div class="portada__text">
+        <h1 id="titol-portada">Videojocs triats amb ull de gat</h1>
+        <p class="portada__entradeta">A <strong>PixelCat Games</strong> provem cada joc abans de posar-lo a la prestatgeria. Hi trobaràs estratègia, aventura, curses, terror i trencaclosques per a PC, PS5, Xbox Series, Switch i mòbil.</p>
+        <p>Tots els preus són en euros i inclouen l'<abbr title="Impost sobre el valor afegit">IVA</abbr>. Si reserves un joc, <em>te'l guardem 48 hores</em> a la botiga.</p>
+        <p class="portada__accions">
+          <a class="boto" href="#cataleg">Veure el catàleg</a>
+          <a class="boto boto--secundari" href="contacte.html">Fes-nos una consulta</a>
+        </p>
+      </div>
+      <figure class="portada__imatge">
+        <img src="img/logo-pixelcat.svg" alt="La mascota de PixelCat Games: un gat taronja dibuixat en pixel art" width="320" height="260">
+      </figure>
+    </section>
+
+    <section class="cataleg" id="cataleg" aria-labelledby="titol-cataleg">
+      <h2 id="titol-cataleg">Catàleg</h2>
+      <p class="cataleg__resum">Ara mateix tenim <strong>8 jocs</strong> disponibles. Les dades surten del fitxer <code>cataleg.xml</code> de la botiga.</p>
+
+      <div class="graella-jocs" id="llista-jocs">
+
+        <article class="targeta-joc" id="joc-001" data-codi="JOC-001" data-preu="39.99" data-valoracio="8.7">
+          <img class="targeta-joc__imatge" src="img/joc-001-comandaments-conquesta.png" alt="Dos castells, un amb bandera blava i l'altre amb bandera vermella, amb els seus exèrcits encarats en un camí de terra" width="800" height="500">
+          <h3 class="targeta-joc__titol">ComandamentsConquesta</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Estratègia, Acció, Tàctica</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PC, Xbox Series</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Un joc d'estratègia en temps real on hauràs de construir la teva base i dirigir els teus exèrcits.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="39.99">39,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 8,7<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc" id="joc-002" data-codi="JOC-002" data-preu="24.99" data-valoracio="9.1">
+          <img class="targeta-joc__imatge" src="img/joc-002-neon-runner.png" alt="Silueta d'un corredor de color cian que travessa una ciutat de nit plena de llums de neó" width="800" height="500">
+          <h3 class="targeta-joc__titol">Neon Runner</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Acció, Plataformes, Cyberpunk</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PC, PS5, Switch</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Corre per una ciutat futurista plena d'obstacles, enemics i secrets amagats.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="24.99">24,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 9,1<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc targeta-joc--destacada" id="joc-003" data-codi="JOC-003" data-preu="49.99" data-valoracio="9.4">
+          <img class="targeta-joc__imatge" src="img/joc-003-kingdoms-of-eldoria.png" alt="Castell de torres vermelles sobre un turó verd, amb muntanyes i una posta de sol al fons" width="800" height="500">
+          <p class="targeta-joc__distintiu">Joc del mes</p>
+          <h3 class="targeta-joc__titol">Kingdoms of Eldoria</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Aventura, Món obert, <abbr title="Joc de rol (role-playing game)">RPG</abbr></dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PC, PS5</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Explora un immens regne fantàstic, completa missions i descobreix una història plena de misteris.</p>
+          <a class="targeta-joc__enllac" href="fitxa.html">Veure la fitxa completa</a>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="49.99">49,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 9,4<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc" id="joc-004" data-codi="JOC-004" data-preu="29.99" data-valoracio="8.2">
+          <img class="targeta-joc__imatge" src="img/joc-004-pixel-kart-turbo.png" alt="Kart vermell corrent per un circuit amb graderies plenes de públic i la línia de meta a quadres" width="800" height="500" loading="lazy">
+          <h3 class="targeta-joc__titol">Pixel Kart Turbo</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Esports, Curses, Arcade</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">Switch, PS5</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Participa en curses frenètiques amb pilots extravagants i circuits plens de sorpreses.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="29.99">29,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 8,2<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc" id="joc-005" data-codi="JOC-005" data-preu="34.99" data-valoracio="8.9">
+          <img class="targeta-joc__imatge" src="img/joc-005-haunted-mansion.png" alt="Mansió fosca amb finestres il·luminades sota una gran lluna plena, amb ratpenats i làpides" width="800" height="500" loading="lazy">
+          <h3 class="targeta-joc__titol">Haunted Mansion</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Terror, Supervivència, Misteri</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PC, Xbox Series</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Investiga una mansió abandonada i resol els seus enigmes mentre descobreixes el seu fosc passat.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="34.99">34,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 8,9<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc" id="joc-006" data-codi="JOC-006" data-preu="44.99" data-valoracio="8.5">
+          <img class="targeta-joc__imatge" src="img/joc-006-galaxy-explorer.png" alt="Nau espacial blanca volant cap a un planeta taronja amb anells, envoltada d'estrelles i d'una nebulosa" width="800" height="500" loading="lazy">
+          <h3 class="targeta-joc__titol">Galaxy Explorer</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Simulació, Exploració espacial, Ciència-ficció</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PC, Xbox Series</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Viatja per l'espai, descobreix nous planetes i gestiona els recursos de la teva nau.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="44.99">44,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 8,5<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc" id="joc-007" data-codi="JOC-007" data-preu="14.99" data-valoracio="8.0">
+          <img class="targeta-joc__imatge" src="img/joc-007-mind-puzzle.png" alt="Peces de colors apilades en una quadrícula, una peça que cau i un signe d'interrogació groc" width="800" height="500" loading="lazy">
+          <h3 class="targeta-joc__titol">Mind Puzzle</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes">Estratègia, Puzles, Lògica</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PC, Mòbil</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Supera centenars de reptes mentals que augmenten progressivament de dificultat.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="14.99">14,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 8,0<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+        <article class="targeta-joc" id="joc-008" data-codi="JOC-008" data-preu="54.99" data-valoracio="9.0">
+          <img class="targeta-joc__imatge" src="img/joc-008-samurai-shadows.png" alt="Silueta d'un samurai amb katana davant d'un sol vermell, una muntanya nevada i una pagoda" width="800" height="500" loading="lazy">
+          <h3 class="targeta-joc__titol">Samurai Shadows</h3>
+          <dl class="targeta-joc__dades">
+            <dt>Gènere</dt>
+            <dd class="targeta-joc__generes"><abbr title="Joc de rol (role-playing game)">RPG</abbr>, Acció, Històrica</dd>
+            <dt>Plataforma</dt>
+            <dd class="targeta-joc__plataformes">PS5, PC</dd>
+          </dl>
+          <p class="targeta-joc__descripcio">Converteix-te en un samurai i recorre un Japó feudal ple d'enemics i aventures.</p>
+          <footer class="targeta-joc__peu">
+            <p class="preu"><data value="54.99">54,99 €</data></p>
+            <p class="valoracio"><span class="valoracio__estrella" aria-hidden="true">★</span> <span class="visualment-amagat">Valoració:</span> 9,0<span class="valoracio__maxim">/10</span></p>
+          </footer>
+        </article>
+
+      </div>
+    </section>
+
+    <aside class="recomanacions" id="recomanacions" aria-labelledby="titol-recomanacions">
+      <h2 id="titol-recomanacions">Recomanacions de la botiga</h2>
+
+      <section class="recomanacions__bloc" aria-labelledby="titol-joc-mes">
+        <h3 id="titol-joc-mes">Joc del mes</h3>
+        <p><a href="fitxa.html"><strong>Kingdoms of Eldoria</strong></a> és el joc més ben valorat del catàleg. A la fitxa en pots veure el tràiler i l'estoc per plataforma.</p>
+      </section>
+
+      <section class="recomanacions__bloc" aria-labelledby="titol-ranquing">
+        <h3 id="titol-ranquing">Els més ben valorats</h3>
+        <ol class="ranquing">
+          <li><a href="#joc-003">Kingdoms of Eldoria</a> <span class="ranquing__nota">9,4</span></li>
+          <li><a href="#joc-002">Neon Runner</a> <span class="ranquing__nota">9,1</span></li>
+          <li><a href="#joc-008">Samurai Shadows</a> <span class="ranquing__nota">9,0</span></li>
+        </ol>
+      </section>
+
+      <section class="recomanacions__bloc" aria-labelledby="titol-economics">
+        <h3 id="titol-economics">Per menys de 30 €</h3>
+        <ul class="llista-economics">
+          <li><a href="#joc-007">Mind Puzzle</a>, 14,99 €</li>
+          <li><a href="#joc-002">Neon Runner</a>, 24,99 €</li>
+          <li><a href="#joc-004">Pixel Kart Turbo</a>, 29,99 €</li>
+        </ul>
+      </section>
+    </aside>
+
+  </main>
+
+  <footer class="peu" id="peu">
+    <div class="peu__interior">
+      <div class="peu__bloc">
+        <p class="peu__marca">PixelCat Games</p>
+        <p>Botiga fictícia de videojocs creada per Laia Carrillo per al projecte del mòdul 0373 (Fase 2, RA2).</p>
+      </div>
+      <nav class="peu__bloc" aria-label="Enllaços del peu de pàgina">
+        <ul class="peu__llista">
+          <li><a href="index.html">Catàleg</a></li>
+          <li><a href="fitxa.html">Fitxa de joc</a></li>
+          <li><a href="contacte.html">Contacte</a></li>
+        </ul>
+      </nav>
+      <div class="peu__bloc">
+        <p>Il·lustracions, logotip, tràiler i música originals creats per a aquest projecte.</p>
+        <p>Tipografies <a href="https://fonts.google.com/specimen/Jersey+10" rel="external">Jersey 10</a> i <a href="https://fonts.google.com/specimen/Atkinson+Hyperlegible" rel="external">Atkinson Hyperlegible</a>, amb llicència OFL.</p>
+        <p>Consulta l'edat recomanada de cada joc a <a href="https://pegi.info/" rel="external">PEGI</a>.</p>
+      </div>
+    </div>
+    <p class="peu__copyright"><small>© 2026 PixelCat Games. Projecte educatiu sense finalitat comercial.</small></p>
+  </footer>
+</body>
+</html>

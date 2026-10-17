@@ -1,0 +1,1122 @@
+@font-face {
+  font-family: "Jersey 10";
+  src: url("fonts/jersey-10-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/atkinson-hyperlegible-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+/* 2. VARIABLES ---------------------------------------------------- */
+:root {
+  --color-tinta: #231942;       /* text, vores i capçalera */
+  --color-tinta-suau: #574b7c;  /* text secundari */
+  --color-fons: #ece8f5;        /* fons de la pàgina */
+  --color-paper: #ffffff;       /* targetes, formulari, taula */
+  --color-rosa: #ff5c8a;        /* nas del gat: element actiu, destacats */
+  --color-taronja: #ffb238;     /* pelatge del gat */
+  --color-groc: #ffc53d;        /* botons i valoracions */
+  --color-menta: #2ec4b6;       /* fons de la il·lustració de portada */
+  --color-focus: #0e7c72;       /* contorn de focus sobre fons clar */
+  --color-linia: #cfc8e2;       /* separadors suaus */
+  --color-error: #c2185b;
+
+  --font-titols: "Jersey 10", "Courier New", monospace;
+  --font-text: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+
+  --vora: 0.1875rem solid var(--color-tinta);       /* 3 px */
+  --vora-fina: 0.125rem solid var(--color-tinta);   /* 2 px */
+  --radi: 0.5rem;
+  --ombra: 0.375rem 0.375rem 0 var(--color-tinta);  /* ombra dura, sense difuminar */
+  --amplada-max: 72rem;
+  --marge-lateral: clamp(1rem, 4vw, 2rem);
+}
+
+
+/* 3. BASE I MODEL DE CAIXA --------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;  /* 1rem = la mida triada al navegador (16 px per defecte) */
+  font-synthesis-weight: none;  /* Jersey 10 només té un gruix: que no l'engreixi */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-tinta);
+  background-color: var(--color-fons);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5em;
+  font-family: var(--font-titols);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+  line-height: 1;
+}
+
+h2 {
+  font-size: clamp(2.125rem, 1.7rem + 1.8vw, 3rem);
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-tinta);
+  text-decoration-thickness: 0.125em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-color: var(--color-rosa);
+}
+
+a[rel="external"]::after {
+  content: " ↗";
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+code {
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+  background-color: var(--color-paper);
+  border: 0.0625rem solid var(--color-linia);
+  border-radius: 0.25rem;
+}
+
+:focus-visible {
+  outline: 0.1875rem solid var(--color-focus);
+  outline-offset: 0.1875rem;
+}
+
+::selection {
+  color: var(--color-tinta);
+  background-color: var(--color-groc);
+}
+
+/* Text que només llegeixen els lectors de pantalla */
+.visualment-amagat {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Enllaç per saltar el menú amb el teclat: apareix en rebre el focus */
+.salt-contingut {
+  position: absolute;
+  top: -10rem;
+  left: 1rem;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  color: var(--color-tinta);
+  background-color: var(--color-groc);
+  border: var(--vora);
+  border-radius: var(--radi);
+}
+
+.salt-contingut:focus {
+  top: 1rem;
+}
+
+
+/* 4. CAPÇALERA I MENÚ (FLEXBOX) ---------------------------------- */
+
+.capcalera {
+  color: var(--color-paper);
+  background-color: var(--color-tinta);
+  border-bottom: 0.375rem solid var(--color-rosa);
+}
+
+.capcalera__interior {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: var(--amplada-max);
+  margin: 0 auto;
+  padding: 0.875rem var(--marge-lateral);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-titols);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-paper);
+  text-decoration: none;
+}
+
+.logo__imatge {
+  width: 3rem;
+}
+
+/* El menú és una llista <ul>; amb Flexbox els <li> es posen en fila
+   i, si no hi caben, salten de línia (flex-wrap). */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu > li {
+  flex: 0 0 auto;
+}
+
+.menu a {
+  display: block;
+  padding: 0.5em 1em;
+  font-weight: 700;
+  color: var(--color-paper);
+  text-decoration: none;
+  border: 0.125rem solid transparent;
+  border-radius: var(--radi);
+}
+
+.menu a:hover {
+  color: var(--color-groc);
+  border-color: var(--color-groc);
+}
+
+/* CAS DE CASCADA (ordre d'aparició)
+   ".menu a:hover" i ".menu a.actiu" tenen la mateixa especificitat:
+   (0,2,1) = 2 classes/pseudoclasses + 1 element. Quan passem el ratolí
+   per sobre de l'enllaç de la pàgina actual, totes dues regles volen
+   canviar el color. Com que empaten, guanya la que està escrita més
+   avall: el text es queda de color tinta (llegible sobre el rosa).
+   La vora groga del :hover sí que s'aplica, perquè .actiu no la toca. */
+.menu a.actiu {
+  color: var(--color-tinta);
+  background-color: var(--color-rosa);
+}
+
+/* Sobre fons fosc el focus es veu millor en groc */
+.capcalera :focus-visible,
+.info-botiga :focus-visible,
+.peu :focus-visible {
+  outline-color: var(--color-groc);
+}
+
+
+/* 5. BOTONS ------------------------------------------------------- */
+/* Botó "de màquina recreativa": vora gruixuda i ombra dura que es
+   desplaça en passar-hi el ratolí i en prémer-lo. */
+
+.boto {
+  display: inline-block;
+  padding: 0.75em 1.25em;
+  font-family: var(--font-titols);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-tinta);
+  text-decoration: none;
+  background-color: var(--color-groc);
+  border: var(--vora);
+  border-radius: var(--radi);
+  box-shadow: var(--ombra);
+  cursor: pointer;
+}
+
+.boto:hover {
+  background-color: var(--color-taronja);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-tinta);
+  transform: translate(-0.125rem, -0.125rem);
+}
+
+.boto:active {
+  box-shadow: 0.125rem 0.125rem 0 var(--color-tinta);
+  transform: translate(0.25rem, 0.25rem);
+}
+
+.boto--secundari {
+  background-color: var(--color-paper);
+}
+
+.boto--secundari:hover {
+  background-color: var(--color-fons);
+}
+
+
+/* 6. PORTADA (index.html) ---------------------------------------- */
+
+.contingut {
+  max-width: var(--amplada-max);
+  margin: 0 auto;
+  padding: 2.5rem var(--marge-lateral) 4rem;
+}
+
+.portada {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: var(--vora);
+}
+
+.portada h1 {
+  max-width: 13ch;
+}
+
+.portada__entradeta {
+  max-width: 36em;
+  font-size: 1.25rem;
+}
+
+.portada__accions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+/* La mascota dins d'una "pantalla" amb quadrícula de píxels */
+.portada__imatge {
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 14%;
+  background-color: var(--color-menta);
+  background-image:
+    linear-gradient(rgba(35, 25, 66, 0.14) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, rgba(35, 25, 66, 0.14) 0.0625rem, transparent 0.0625rem);
+  background-size: 1.5rem 1.5rem;
+  border: var(--vora);
+  border-radius: var(--radi);
+  box-shadow: 0.75rem 0.75rem 0 var(--color-tinta);
+  transform: rotate(-2deg);
+}
+
+.portada__imatge img {
+  width: 100%;
+}
+
+
+/* 7. CATÀLEG I TARGETES (GRID) ------------------------------------ */
+
+#cataleg {
+  scroll-margin-top: 1.5rem;  /* deixa aire en saltar-hi des del botó */
+}
+
+.cataleg__resum {
+  max-width: 40em;
+  color: var(--color-tinta-suau);
+}
+
+/* Quadrícula de targetes: tantes columnes de mínim 16,5rem com
+   càpiguen. En mòbil n'hi ha una; en escriptori, tres o quatre. */
+.graella-jocs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+  gap: 2rem 1.75rem;
+  margin-top: 2rem;
+}
+
+/* Cada targeta és una columna Flexbox: la descripció creix i el peu
+   amb el preu queda sempre a baix, encara que els textos variïn. */
+.targeta-joc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-paper);
+  border: var(--vora);
+  border-radius: var(--radi);
+  box-shadow: var(--ombra);
+}
+
+.targeta-joc__imatge {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  border-bottom: var(--vora);
+}
+
+/* Tots els fills directes de la targeta, menys la imatge, tenen
+   marge lateral perquè el text no toqui la vora. */
+.targeta-joc > :not(img) {
+  margin-left: 1.125rem;
+  margin-right: 1.125rem;
+}
+
+.targeta-joc__titol {
+  margin-top: 1rem;
+  margin-bottom: 0.625rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.targeta-joc__dades {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.125rem 0.75rem;
+  margin-top: 0;
+  margin-bottom: 0.875rem;
+  font-size: 0.9375rem;
+}
+
+.targeta-joc__dades dt {
+  font-weight: 700;
+  color: var(--color-tinta-suau);
+}
+
+.targeta-joc__dades dd {
+  margin: 0;
+}
+
+.targeta-joc__descripcio {
+  flex-grow: 1;
+  font-size: 0.9375rem;
+}
+
+.targeta-joc__enllac {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.targeta-joc__peu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.125rem;
+  background-color: var(--color-fons);
+  border-top: var(--vora-fina);
+}
+
+/* CAS D'ESPECIFICITAT
+   El peu ha d'ocupar tota l'amplada de la targeta, però la regla
+   ".targeta-joc > :not(img)" li posa marges laterals.
+   - ".targeta-joc > :not(img)"  → 1 classe + 1 element (el img de
+     dins de :not compta) = especificitat (0,1,1)
+   - ".targeta-joc__peu"         → 1 classe = (0,1,0)
+   Encara que .targeta-joc__peu estigui escrita després, té MENYS
+   especificitat i no podria treure els marges. Per això fem servir
+   ".targeta-joc > .targeta-joc__peu" → 2 classes = (0,2,0), que sí
+   que guanya. El mateix passa amb el distintiu "Joc del mes". */
+.targeta-joc > .targeta-joc__peu,
+.targeta-joc > .targeta-joc__distintiu {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.targeta-joc__distintiu {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  margin: 0;
+  padding: 0.125rem 0.75rem;
+  font-family: var(--font-titols);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-tinta);
+  background-color: var(--color-rosa);
+  border: var(--vora-fina);
+  border-radius: var(--radi);
+}
+
+.targeta-joc--destacada {
+  box-shadow: 0.375rem 0.375rem 0 var(--color-rosa);
+}
+
+.preu {
+  margin: 0;
+  font-family: var(--font-titols);
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.valoracio {
+  margin: 0;
+  padding: 0.125rem 0.625rem;
+  font-weight: 700;
+  white-space: nowrap;
+  background-color: var(--color-groc);
+  border: var(--vora-fina);
+  border-radius: 62.5rem;  /* píndola: qualsevol valor molt gran */
+}
+
+.valoracio__maxim {
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+
+/* 8. RECOMANACIONS (aside de l'índex) ----------------------------- */
+
+.recomanacions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.5rem 2.5rem;
+  margin-top: 4.5rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  background-color: var(--color-paper);
+  border: var(--vora);
+  border-radius: var(--radi);
+}
+
+/* El títol de l'aside ocupa totes les columnes de la quadrícula */
+.recomanacions > h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.recomanacions__bloc h3 {
+  padding-bottom: 0.5rem;
+  border-bottom: var(--vora-fina);
+}
+
+.recomanacions__bloc p {
+  margin: 0;
+}
+
+.ranquing,
+.llista-economics {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.ranquing li,
+.llista-economics li {
+  margin-bottom: 0.5rem;
+}
+
+.ranquing li::marker {
+  font-family: var(--font-titols);
+  font-weight: 400;
+}
+
+.llista-economics li::marker {
+  color: var(--color-rosa);
+}
+
+.ranquing__nota {
+  margin-left: 0.25rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background-color: var(--color-groc);
+  border-radius: 62.5rem;
+}
+
+
+/* 9. FITXA DE JOC (fitxa.html) ------------------------------------ */
+
+.disposicio-fitxa {
+  display: grid;
+  gap: 1.5rem 3rem;
+}
+
+.ruta ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  list-style: none;
+}
+
+/* Barra separadora davant de cada element de la ruta menys el primer */
+.ruta li + li::before {
+  content: "/";
+  margin-right: 0.5rem;
+  color: var(--color-tinta-suau);
+}
+
+.ruta [aria-current="page"] {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.fitxa__capcalera {
+  margin-bottom: 2rem;
+}
+
+.fitxa__subtitol {
+  max-width: 40em;
+  font-size: 1.25rem;
+  color: var(--color-tinta-suau);
+}
+
+.fitxa__principal {
+  display: grid;
+  align-items: start;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.fitxa__portada,
+.video {
+  margin: 0;
+}
+
+.fitxa__portada img,
+.video video {
+  width: 100%;
+  background-color: var(--color-tinta);
+  border: var(--vora);
+  border-radius: var(--radi);
+  box-shadow: var(--ombra);
+}
+
+figcaption {
+  margin-top: 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--color-tinta-suau);
+}
+
+.fitxa__compra {
+  padding: 1.5rem;
+  background-color: var(--color-paper);
+  border: var(--vora);
+  border-radius: var(--radi);
+  box-shadow: 0.375rem 0.375rem 0 var(--color-rosa);
+}
+
+.fitxa__compra h2 {
+  font-size: 1.75rem;
+}
+
+.preu--gran {
+  margin-bottom: 0.75rem;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.valoracio--gran {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.fitxa__estoc {
+  margin-bottom: 1.5rem;
+}
+
+.fitxa__seccio {
+  margin-bottom: 3rem;
+}
+
+.fitxa__seccio > p,
+.caracteristiques {
+  max-width: 40em;
+}
+
+.caracteristiques {
+  padding-left: 1.25rem;
+  list-style: square;
+}
+
+.caracteristiques li {
+  margin-bottom: 0.375rem;
+}
+
+.caracteristiques li::marker {
+  color: var(--color-rosa);
+}
+
+.fitxa__dades {
+  display: grid;
+  gap: 0 3rem;
+}
+
+.dades-tecniques {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+}
+
+.dades-tecniques dt {
+  font-weight: 700;
+}
+
+.dades-tecniques dd {
+  margin: 0;
+}
+
+.relacionats {
+  align-self: start;
+}
+
+.relacionats h2 {
+  font-size: 2rem;
+}
+
+.relacionats__llista {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Mini targeta: imatge a l'esquerra i dues línies de text */
+.mini-joc {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  column-gap: 0.875rem;
+  align-items: center;
+  padding: 0.625rem;
+  text-decoration: none;
+  background-color: var(--color-paper);
+  border: var(--vora-fina);
+  border-radius: var(--radi);
+}
+
+.mini-joc:hover {
+  background-color: var(--color-groc);
+}
+
+.mini-joc img {
+  grid-row: 1 / 3;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.mini-joc__titol {
+  align-self: end;
+  font-family: var(--font-titols);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.mini-joc__info {
+  align-self: start;
+  font-size: 0.875rem;
+  color: var(--color-tinta-suau);
+}
+
+
+/* 10. TAULA ------------------------------------------------------- */
+
+.taula-contenidor {
+  overflow-x: auto;  /* si la pantalla és molt estreta, la taula llisca */
+}
+
+.taula {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-paper);
+  border: var(--vora);
+}
+
+.taula caption {
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+  color: var(--color-tinta-suau);
+  text-align: left;
+  caption-side: top;
+}
+
+.taula th,
+.taula td {
+  padding: 0.75em 1em;
+  text-align: left;
+  border-bottom: 0.0625rem solid var(--color-linia);
+}
+
+/* ".taula .num" (0,2,0) guanya a ".taula td" (0,1,1): els números
+   queden alineats a la dreta encara que la regla general digui left. */
+.taula .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.taula thead th {
+  font-family: var(--font-titols);
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: var(--color-paper);
+  background-color: var(--color-tinta);
+}
+
+.taula tbody tr:nth-child(even) {
+  background-color: #f6f4fb;
+}
+
+.taula tfoot th,
+.taula tfoot td {
+  font-weight: 700;
+  background-color: var(--color-groc);
+  border-top: var(--vora-fina);
+  border-bottom: 0;
+}
+
+
+/* 11. CONTACTE I FORMULARI (contacte.html) ------------------------ */
+
+.capcalera-pagina {
+  margin-bottom: 2.5rem;
+}
+
+.entradeta {
+  max-width: 36em;
+  font-size: 1.25rem;
+}
+
+.disposicio-contacte {
+  display: grid;
+  align-items: start;
+  gap: 2.5rem;
+}
+
+.nota-obligatoris {
+  color: var(--color-tinta-suau);
+}
+
+#formulari-contacte {
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  background-color: var(--color-paper);
+  border: var(--vora);
+  border-radius: var(--radi);
+  box-shadow: var(--ombra);
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0 0 1.75rem;
+  padding: 1.25rem 1.25rem 0.25rem;
+  border: 0.125rem solid var(--color-linia);
+  border-radius: var(--radi);
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-family: var(--font-titols);
+  font-size: 1.625rem;
+  font-weight: 400;
+}
+
+.formulari__subgrup {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-style: dashed;
+}
+
+.formulari__subgrup legend {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.camp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
+}
+
+.camp label {
+  font-weight: 700;
+}
+
+.camp__ajuda {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-tinta-suau);
+}
+
+.obligatori {
+  color: var(--color-error);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.625em 0.75em;
+  font: inherit;
+  color: inherit;
+  background-color: #fbfaff;
+  border: var(--vora-fina);
+  border-radius: 0.375rem;
+}
+
+textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+/* input[type="radio"] (0,1,1) té més especificitat que input (0,0,1),
+   per això les caselles no agafen el width: 100% dels altres camps. */
+input[type="checkbox"],
+input[type="radio"] {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--color-rosa);
+}
+
+/* Camps mal omplerts: només després que la persona hi hagi escrit */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  background-color: #fff0f5;
+  border-color: var(--color-error);
+}
+
+.camps-doble {
+  display: grid;
+  gap: 0 1.25rem;
+}
+
+.opcions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.opcio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.camp--casella {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.camp--casella label {
+  font-weight: 400;
+}
+
+.formulari__accions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.info-botiga {
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  color: var(--color-fons);
+  background-color: var(--color-tinta);
+  border-radius: var(--radi);
+  box-shadow: 0.375rem 0.375rem 0 var(--color-rosa);
+}
+
+.info-botiga h2,
+.info-botiga h3 {
+  color: var(--color-paper);
+}
+
+.info-botiga a {
+  color: var(--color-groc);
+}
+
+address {
+  margin-bottom: 1.75rem;
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.horari {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.375rem 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.horari dd {
+  margin: 0;
+  text-align: right;
+}
+
+
+/* 12. PEU DE PÀGINA ----------------------------------------------- */
+
+.peu {
+  color: var(--color-fons);
+  background-color: var(--color-tinta);
+  border-top: 0.375rem solid var(--color-rosa);
+}
+
+.peu__interior {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.5rem 2.5rem;
+  max-width: var(--amplada-max);
+  margin: 0 auto;
+  padding: 2.5rem var(--marge-lateral) 1rem;
+}
+
+.peu a {
+  color: var(--color-groc);
+}
+
+.peu__marca {
+  font-family: var(--font-titols);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-paper);
+}
+
+.peu__llista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.peu__copyright {
+  max-width: var(--amplada-max);
+  margin: 0 auto;
+  padding: 1rem var(--marge-lateral) 1.5rem;
+  color: #bdb5d6;
+  border-top: 0.0625rem solid #3d3366;
+}
+
+
+/* 13. ADAPTACIÓ A PANTALLES (MEDIA QUERIES) ----------------------- */
+/* El disseny és "mobile first": les regles de dalt són per a mòbil
+   i aquí s'hi afegeixen columnes quan la pantalla és més ampla. */
+
+@media (min-width: 40rem) {
+  .camps-doble {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 48rem) {
+  .portada {
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+  }
+
+  .fitxa__principal {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .fitxa__dades {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 64rem) {
+  .disposicio-fitxa {
+    grid-template-columns: minmax(0, 1fr) 17rem;
+  }
+
+  .disposicio-fitxa > .ruta {
+    grid-column: 1 / -1;
+  }
+
+  .disposicio-contacte {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+  }
+}
+
+/* Mòbil: el menú ocupa tota l'amplada i els tres enllaços es reparteixen
+   l'espai. */
+@media (max-width: 39.99rem) {
+  .capcalera__interior {
+    justify-content: center;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .menu > li {
+    flex: 1 1 auto;
+  }
+
+  .menu a {
+    padding: 0.5em 0.5em;
+    text-align: center;
+  }
+
+  .portada__imatge {
+    max-width: 15rem;
+  }
+
+  .preu--gran {
+    font-size: 3.25rem;
+  }
+}
+
+/* Animacions suaus només si la persona no ha demanat reduir el moviment */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .boto {
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+      background-color 0.12s ease-out;
+  }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contacta amb PixelCat Games per reservar un joc, preguntar per l'estoc o fer qualsevol consulta. Adreça, telèfon i horari de la botiga.">
+  <meta name="author" content="Laia Carrillo">
+  <title>Contacte | PixelCat Games</title>
+  <link rel="icon" href="img/logo-pixelcat.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estils.css">
+</head>
+<body>
+  <a class="salt-contingut" href="#contingut">Salta al contingut principal</a>
+
+  <header class="capcalera" id="capcalera">
+    <div class="capcalera__interior">
+      <a class="logo" href="index.html">
+        <img class="logo__imatge" src="img/logo-pixelcat.svg" alt="" width="48" height="39">
+        <span class="logo__nom">PixelCat Games</span>
+      </a>
+      <nav class="navegacio" aria-label="Navegació principal">
+        <ul class="menu" id="menu-principal">
+          <li><a class="menu__enllac" href="index.html">Catàleg</a></li>
+          <li><a class="menu__enllac" href="fitxa.html">Fitxa de joc</a></li>
+          <li><a class="menu__enllac actiu" href="contacte.html" aria-current="page">Contacte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contingut" id="contingut">
+
+    <header class="capcalera-pagina">
+      <h1>Contacte</h1>
+      <p class="entradeta">Vols reservar un joc, saber quan arribarà una novetat o fer-nos una proposta? Escriu-nos i et respondrem en menys de 48 hores.</p>
+    </header>
+
+    <div class="disposicio-contacte">
+
+      <section class="seccio-formulari" id="seccio-formulari" aria-labelledby="titol-formulari">
+        <h2 id="titol-formulari">Envia'ns la teva consulta</h2>
+        <p class="nota-obligatoris">Els camps marcats amb un asterisc (<span class="obligatori">*</span>) són obligatoris.</p>
+
+        <form class="formulari" id="formulari-contacte" action="#" method="get">
+
+          <fieldset class="formulari__grup">
+            <legend>Les teves dades</legend>
+            <div class="camps-doble">
+              <div class="camp">
+                <label for="nom">Nom i cognoms <span class="obligatori" aria-hidden="true">*</span></label>
+                <input type="text" id="nom" name="nom" autocomplete="name" required minlength="2" placeholder="Ex.: Marta Puig">
+              </div>
+              <div class="camp">
+                <label for="correu">Correu electrònic <span class="obligatori" aria-hidden="true">*</span></label>
+                <input type="email" id="correu" name="correu" autocomplete="email" required placeholder="nom@exemple.cat">
+              </div>
+            </div>
+            <div class="camp">
+              <label for="telefon">Telèfon</label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" pattern="[0-9 +]{9,15}" placeholder="600 000 000" aria-describedby="ajuda-telefon">
+              <p class="camp__ajuda" id="ajuda-telefon">Opcional. Només et trucarem si ens ho demanes al missatge.</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="formulari__grup">
+            <legend>La consulta</legend>
+            <div class="camps-doble">
+              <div class="camp">
+                <label for="motiu">Motiu <span class="obligatori" aria-hidden="true">*</span></label>
+                <select id="motiu" name="motiu" required>
+                  <option value="">Tria una opció</option>
+                  <option value="reserva">Reservar un joc</option>
+                  <option value="estoc">Disponibilitat i estoc</option>
+                  <option value="devolucio">Devolucions i garanties</option>
+                  <option value="altres">Altres consultes</option>
+                </select>
+              </div>
+              <div class="camp">
+                <label for="joc">Joc</label>
+                <select id="joc" name="joc">
+                  <option value="">Cap joc en concret</option>
+                  <option value="JOC-001">ComandamentsConquesta</option>
+                  <option value="JOC-002">Neon Runner</option>
+                  <option value="JOC-003">Kingdoms of Eldoria</option>
+                  <option value="JOC-004">Pixel Kart Turbo</option>
+                  <option value="JOC-005">Haunted Mansion</option>
+                  <option value="JOC-006">Galaxy Explorer</option>
+                  <option value="JOC-007">Mind Puzzle</option>
+                  <option value="JOC-008">Samurai Shadows</option>
+                </select>
+              </div>
+            </div>
+
+            <fieldset class="formulari__subgrup" id="grup-plataforma">
+              <legend>Plataforma</legend>
+              <div class="opcions">
+                <label class="opcio" for="plataforma-pc"><input type="radio" id="plataforma-pc" name="plataforma" value="PC" checked> PC</label>
+                <label class="opcio" for="plataforma-ps5"><input type="radio" id="plataforma-ps5" name="plataforma" value="PS5"> PS5</label>
+                <label class="opcio" for="plataforma-xbox"><input type="radio" id="plataforma-xbox" name="plataforma" value="Xbox Series"> Xbox Series</label>
+                <label class="opcio" for="plataforma-switch"><input type="radio" id="plataforma-switch" name="plataforma" value="Switch"> Switch</label>
+                <label class="opcio" for="plataforma-mobil"><input type="radio" id="plataforma-mobil" name="plataforma" value="Mobil"> Mòbil</label>
+              </div>
+            </fieldset>
+
+            <div class="camps-doble">
+              <div class="camp">
+                <label for="unitats">Unitats</label>
+                <input type="number" id="unitats" name="unitats" min="1" max="5" step="1" value="1" aria-describedby="ajuda-unitats">
+                <p class="camp__ajuda" id="ajuda-unitats">Màxim 5 unitats per reserva.</p>
+              </div>
+              <div class="camp">
+                <label for="data-recollida">Data de recollida</label>
+                <input type="date" id="data-recollida" name="data_recollida">
+              </div>
+            </div>
+
+            <div class="camp">
+              <label for="missatge">Missatge <span class="obligatori" aria-hidden="true">*</span></label>
+              <textarea id="missatge" name="missatge" rows="6" required minlength="10" placeholder="Explica'ns en què et podem ajudar"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="camp camp--casella">
+            <input type="checkbox" id="butlleti" name="butlleti" value="si">
+            <label for="butlleti">Vull rebre el butlletí mensual amb novetats i ofertes.</label>
+          </div>
+          <div class="camp camp--casella">
+            <input type="checkbox" id="privacitat" name="privacitat" value="acceptada" required>
+            <label for="privacitat">He llegit i accepto la política de privacitat. <span class="obligatori" aria-hidden="true">*</span></label>
+          </div>
+
+          <div class="formulari__accions">
+            <button class="boto" type="submit" id="boto-enviar">Envia la consulta</button>
+            <button class="boto boto--secundari" type="reset">Esborra el formulari</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="info-botiga" id="info-botiga" aria-labelledby="titol-botiga">
+        <h2 id="titol-botiga">La botiga</h2>
+        <address>
+          <strong>PixelCat Games</strong><br>
+          Carrer dels Píxels, 8<br>
+          17001 Girona<br>
+          Telèfon: <a href="tel:+34972000000">972 000 000</a><br>
+          Correu: <a href="mailto:hola@pixelcatgames.cat">hola@pixelcatgames.cat</a>
+        </address>
+
+        <h3>Horari</h3>
+        <dl class="horari">
+          <dt>De dilluns a divendres</dt>
+          <dd><time datetime="10:00">10:00</time>–<time datetime="20:00">20:00</time> h</dd>
+          <dt>Dissabte</dt>
+          <dd><time datetime="10:00">10:00</time>–<time datetime="14:00">14:00</time> h</dd>
+          <dt>Diumenge</dt>
+          <dd>Tancat</dd>
+        </dl>
+
+        <p>Les reserves fetes amb aquest formulari es guarden <strong>48 hores</strong>.</p>
+        <p><a href="https://www.openstreetmap.org/search?query=Girona" rel="external">Com arribar-hi amb OpenStreetMap</a></p>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="peu" id="peu">
+    <div class="peu__interior">
+      <div class="peu__bloc">
+        <p class="peu__marca">PixelCat Games</p>
+        <p>Botiga fictícia de videojocs creada per Laia Carrillo per al projecte del mòdul 0373 (Fase 2, RA2).</p>
+      </div>
+      <nav class="peu__bloc" aria-label="Enllaços del peu de pàgina">
+        <ul class="peu__llista">
+          <li><a href="index.html">Catàleg</a></li>
+          <li><a href="fitxa.html">Fitxa de joc</a></li>
+          <li><a href="contacte.html">Contacte</a></li>
+        </ul>
+      </nav>
+      <div class="peu__bloc">
+        <p>Il·lustracions, logotip, tràiler i música originals creats per a aquest projecte.</p>
+        <p>Tipografies <a href="https://fonts.google.com/specimen/Jersey+10" rel="external">Jersey 10</a> i <a href="https://fonts.google.com/specimen/Atkinson+Hyperlegible" rel="external">Atkinson Hyperlegible</a>, amb llicència OFL.</p>
+        <p>Consulta l'edat recomanada de cada joc a <a href="https://pegi.info/" rel="external">PEGI</a>.</p>
+      </div>
+    </div>
+    <p class="peu__copyright"><small>© 2026 PixelCat Games. Projecte educatiu sense finalitat comercial.</small></p>
+  </footer>
+</body>
+</html>
